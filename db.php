@@ -4,7 +4,7 @@ $username = "root"; // Cambia según tu config
 $password = "IBTMFGoaNWWmcGQdxMcuGJAOthThPESV"; // Contraseña de tu base
 $dbname = "railway"; // Nombre de tu base
 
-$conn = new mysqli($servername, $username, $password, $dbname);
+$pdo = new PDO("mysql:host=localhost;dbname=tu_base", "usuario", "contraseña");
 
 if ($conn->connect_error) {
   die("Error de conexión: " . $conn->connect_error);
