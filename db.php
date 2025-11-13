@@ -1,12 +1,16 @@
 <?php
-$servername = "mysql.railway.internal"; // Reemplaza con tu host real de Railway
-$username = "root"; // Cambia según tu config
-$password = "IBTMFGoaNWWmcGQdxMcuGJAOthThPESV"; // Contraseña de tu base
-$dbname = "railway"; // Nombre de tu base
+$servername = "mysql.railway.internal";
+$username = "root";
+$password = "IBTMFGoaNWWmcGQdxMcuGJAOthThPESV";
+$dbname = "railway";
 
-$pdo = new PDO("mysql:host=mysql.railway.internal;dbname=railway", "root", "IBTMFGoaNWWmcGQdxMcuGJAOthThPESV");
-
-if ($conn->connect_error) {
-  die("Error de conexión: " . $conn->connect_error);
+try {
+    $pdo = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+    // Configura PDO para lanzar excepciones en caso de error
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    // Opcional: mensaje de éxito
+    // echo "Conexión exitosa";
+} catch (PDOException $e) {
+    die("Error de conexión: " . $e->getMessage());
 }
 ?>
