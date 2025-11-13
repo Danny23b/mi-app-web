@@ -21,12 +21,13 @@
     $correo = $_POST['correo'];
     $telefono = $_POST['telefono'];
 
-    $sql = "INSERT INTO usuarios (nombre, correo, telefono) VALUES ('$nombre', '$correo', '$telefono')";
-    if ($conn->query($sql) === TRUE) {
+    try {
+      $stmt = $pdo->prepare("INSERT INTO usuarios (nombre, correo, telefono) VALUES (?, ?, ?)");
+      $stmt->execute([$nombre, $correo, $telefono]);
       echo "<p>Usuario agregado correctamente</p>";
       header("refresh:1; url=index.php");
-    } else {
-      echo "<p>Error: " . $conn->error . "</p>";
+    } catch (PDOException $e) {
+      echo "<p>Error: " . $e->getMessage() . "</p>";
     }
   }
   ?>
