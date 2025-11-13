@@ -19,7 +19,7 @@
     </tr>
     <?php
       $sql = "SELECT * FROM usuarios";
-      $stmt = $pdo->query($sql); // Usamos $pdo en lugar de $conn
+      $stmt = $pdo->query($sql);
       while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
         echo "<tr>
                 <td>{$row['id']}</td>
@@ -33,7 +33,6 @@
               </tr>";
       }
     ?>
-
   </table>
 </body>
 </html>
