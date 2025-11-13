@@ -1,9 +1,15 @@
 <?php include 'db.php'; ?>
 <?php
 $id = $_GET['id'];
-$sql = "SELECT * FROM usuarios WHERE id=$id";
-$result = $conn->query($sql);
-$row = $result->fetch_assoc();
+
+// Obtener datos del usuario
+try {
+  $stmt = $pdo->prepare("SELECT * FROM usuarios WHERE id = ?");
+  $stmt->execute([$id]);
+  $row = $stmt->fetch(PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
+  die("Error al obtener usuario: " . $e->getMessage());
+}
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -27,12 +33,13 @@ $row = $result->fetch_assoc();
     $correo = $_POST['correo'];
     $telefono = $_POST['telefono'];
 
-    $update = "UPDATE usuarios SET nombre='$nombre', correo='$correo', telefono='$telefono' WHERE id=$id";
-    if ($conn->query($update) === TRUE) {
+    try {
+      $update = $pdo->prepare("UPDATE usuarios SET nombre = ?, correo = ?, telefono = ? WHERE id = ?");
+      $update->execute([$nombre, $correo, $telefono, $id]);
       echo "<p>Usuario actualizado correctamente</p>";
       header("refresh:1; url=index.php");
-    } else {
-      echo "<p>Error: " . $conn->error . "</p>";
+    } catch (PDOException $e) {
+      echo "<p>Error al actualizar: " . $e->getMessage() . "</p>";
     }
   }
   ?>
