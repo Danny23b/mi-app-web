@@ -1,15 +1,14 @@
 <?php
-$servername = "mysql.railway.internal";
-$username = "root";
-$password = "IBTMFGoaNWWmcGQdxMcuGJAOthThPESV";
-$dbname = "railway";
+$host = getenv("MYSQLHOST");
+$port = getenv("MYSQLPORT");
+$dbname = getenv("MYSQLDATABASE");
+$username = getenv("MYSQLUSER");
+$password = getenv("MYSQLPASSWORD");
 
 try {
-    $pdo = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-    // Configura PDO para lanzar excepciones en caso de error
+    $pdo = new PDO("mysql:host=$host;port=$port;dbname=$dbname", $username, $password);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    // Opcional: mensaje de éxito
-    // echo "Conexión exitosa";
+    // echo "Conexión exitosa"; // Puedes activar esto para pruebas
 } catch (PDOException $e) {
     die("Error de conexión: " . $e->getMessage());
 }
