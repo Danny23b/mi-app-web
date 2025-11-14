@@ -17,19 +17,20 @@
 
   <?php
   if ($_POST) {
-    $nombre = $_POST['nombre'];
-    $correo = $_POST['correo'];
-    $telefono = $_POST['telefono'];
+  $nombre = $_POST['nombre'];
+  $correo = $_POST['correo'];
+  $telefono = $_POST['telefono'];
 
-    try {
-      $stmt = $pdo->prepare("INSERT INTO usuarios (nombre, correo, telefono) VALUES (?, ?, ?)");
-      $stmt->execute([$nombre, $correo, $telefono]);
-      echo "<p>Usuario agregado correctamente</p>";
-      header("refresh:1; url=index.php");
-    } catch (PDOException $e) {
-      echo "<p>Error: " . $e->getMessage() . "</p>";
-    }
+  try {
+    $stmt = $pdo->prepare("INSERT INTO usuarios (nombre, correo, telefono) VALUES (?, ?, ?)");
+    $stmt->execute([$nombre, $correo, $telefono]);
+    header("Location: index.php"); 
+    exit; 
+  } catch (PDOException $e) {
+    echo "<p>Error: " . $e->getMessage() . "</p>";
   }
+}
+
   ?>
 </body>
 </html>
