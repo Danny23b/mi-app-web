@@ -13,7 +13,8 @@ try {
 
     $pdo->exec($sql);
 
-    echo "✔ Tabla 'productos' creada correctamente";
+    echo "<h2>Tabla creada correctamente ✔</h2>";
 } catch (PDOException $e) {
-    echo "❌ Error creando tabla: " . $e->getMessage();
+    echo "Error al crear la tabla: " . $e->getMessage();
 }
+?>
