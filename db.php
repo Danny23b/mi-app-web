@@ -1,9 +1,9 @@
 <?php
-$host = getenv("dpg-d4l1csjuibrs73fpnic0-a");
-$dbname = getenv("my_app_zwdv");
-$user = getenv("my_app_zwdv_user");
-$pass = getenv("IiLLuxOd12oITw9JaM34ZC7jdMDDriUM");
-$port = 5432;
+$host = getenv("DB_HOST");
+$dbname = getenv("DB_NAME");
+$user = getenv("DB_USER");
+$pass = getenv("DB_PASS");
+$port = getenv("DB_PORT");
 
 try {
     $pdo = new PDO("pgsql:host=$host;port=$port;dbname=$dbname", $user, $pass);
@@ -12,4 +12,3 @@ try {
     die("Error en la conexión: " . $e->getMessage());
 }
 ?>
-
