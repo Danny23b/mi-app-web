@@ -1,12 +1,12 @@
 <?php
-$host = getenv("DB_HOST");
-$dbname = getenv("DB_NAME");
-$user = getenv("DB_USER");
-$pass = getenv("DB_PASS");
-$port = getenv("DB_PORT");
+$host = getenv("dpg-d4l1pm7gi27c73erojjg-a");
+$dbname = getenv("my_app_heqx");
+$user = getenv("my_app_heqx_user");
+$pass = getenv("fH6OEYu74VmpCMJ0pKLpGoPIZLPdaPQw");
+$port = getenv(5432);
 
 try {
-    $pdo = new PDO("pgsql:host=$host;port=$port;dbname=$dbname", $user, $pass);
+    $pdo = new PDO("pgsql:host=$host;port=$port;database=$dbname", $user, $pass);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch (PDOException $e) {
     die("Error en la conexión: " . $e->getMessage());
