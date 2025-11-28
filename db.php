@@ -1,14 +1,15 @@
 <?php
-$host = "mysql.railway.internal";
-$port = 3306;
-$dbname = "railway";
-$username = "root";
-$password = "DOxcNjiDGrEvGDIflAraakocOJsNvFqP";
+$host = getenv("dpg-d4l1csjuibrs73fpnic0-a");
+$dbname = getenv("my_app_zwdv");
+$user = getenv("my_app_zwdv_user");
+$pass = getenv("IiLLuxOd12oITw9JaM34ZC7jdMDDriUM");
+$port = getenv("5432");
 
 try {
-    $pdo = new PDO("mysql:host=$host;port=$port;dbname=$dbname", $username, $password);
+    $pdo = new PDO("pgsql:host=$host;port=$port;dbname=$dbname", $user, $pass);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch (PDOException $e) {
-    die("Error de conexión: " . $e->getMessage());
+    die("Error en la conexión: " . $e->getMessage());
 }
 ?>
+
