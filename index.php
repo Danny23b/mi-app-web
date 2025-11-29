@@ -30,9 +30,4 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
 ?>
 </table>
 
-<div class="video-container">
-    <h3>Video recomendado</h3>
-    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
-</div>
-
 <?php include "footer.php"; ?>
