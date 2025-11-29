@@ -1,11 +1,11 @@
 <?php include "db.php"; ?>
-<?php include "header.php"; ?>
 
 <?php
 if ($_POST) {
     $stmt = $pdo->prepare("INSERT INTO productos (nombre, precio, descripcion) VALUES (?, ?, ?)");
     $stmt->execute([$_POST['nombre'], $_POST['precio'], $_POST['descripcion']]);
     header("Location: index.php");
+    exit;
 }
 ?>
 
