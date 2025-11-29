@@ -1,12 +1,14 @@
-<?php include "db.php"; ?>
-
 <?php
+include "db.php";
+
 if ($_POST) {
     $stmt = $pdo->prepare("INSERT INTO productos (nombre, precio, descripcion) VALUES (?, ?, ?)");
     $stmt->execute([$_POST['nombre'], $_POST['precio'], $_POST['descripcion']]);
     header("Location: index.php");
     exit;
 }
+
+include "header.php";
 ?>
 
 <h2>Agregar producto</h2>
@@ -19,4 +21,5 @@ if ($_POST) {
 </form>
 
 <?php include "footer.php"; ?>
+
 
