@@ -1,7 +1,6 @@
-<?php include "db.php"; ?>
-<?php include "header.php"; ?>
-
 <?php
+include "db.php";
+
 $id = $_GET['id'];
 
 if ($_POST) {
@@ -16,6 +15,8 @@ $stmt->execute([$id]);
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
 ?>
 
+<?php include "header.php"; ?>
+
 <h2>Editar producto</h2>
 
 <form method="POST">
@@ -26,3 +27,4 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 </form>
 
 <?php include "footer.php"; ?>
+
