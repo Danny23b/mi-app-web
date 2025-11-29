@@ -8,6 +8,7 @@ if ($_POST) {
     $stmt = $pdo->prepare("UPDATE productos SET nombre=?, precio=?, descripcion=? WHERE id=?");
     $stmt->execute([$_POST['nombre'], $_POST['precio'], $_POST['descripcion'], $id]);
     header("Location: index.php");
+    exit;
 }
 
 $stmt = $pdo->prepare("SELECT * FROM productos WHERE id = ?");
